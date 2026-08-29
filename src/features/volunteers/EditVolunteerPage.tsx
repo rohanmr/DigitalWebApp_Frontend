@@ -1,11 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { EditVolunteerForm } from "@/features/volunteers/EditVolunteerForm";
 import { getVolunteerByIdApi } from "@/api/volunteerApi";
 import type { Volunteer } from "@/types/volunteer";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export function EditVolunteerPage() {
   const { id } = useParams<{ id: string }>();
@@ -54,6 +56,13 @@ export function EditVolunteerPage() {
 
   return (
     <div className="mx-auto max-w-md">
+      <div className="no-print flex items-center mb-2 justify-between">
+        <Button variant="ghost" size="sm">
+          <Link to="/admin/volunteers" className="flex items-center">
+            <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
+          </Link>
+        </Button>
+      </div>
       <Card className="border-none shadow-sm sm:border sm:shadow-none">
         <CardHeader>
           <CardTitle>Edit Volunteer</CardTitle>

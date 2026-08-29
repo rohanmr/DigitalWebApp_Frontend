@@ -46,7 +46,7 @@ export function DonationsFilterBar({
           <SelectTrigger className="h-10 sm:w-48">
             <SelectValue placeholder="All Status" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="p-2">
             <SelectItem value="ALL">All Status</SelectItem>
             <SelectItem value="PAID">Paid</SelectItem>
             <SelectItem value="PENDING">Pending</SelectItem>

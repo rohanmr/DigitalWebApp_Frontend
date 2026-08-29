@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -7,6 +7,8 @@ import { EditDonationForm } from "@/features/donations/EditDonationForm";
 import { getDonationByIdApi } from "@/api/donationApi";
 import { useAuth } from "@/features/auth/AuthContext";
 import type { Donation } from "@/types/donation";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 interface EditDonationPageProps {
   basePath: string; // "/admin/donations" | "/volunteer/donations"
@@ -63,11 +65,18 @@ export function EditDonationPage({ basePath }: EditDonationPageProps) {
 
   return (
     <div className="mx-auto max-w-2xl">
+      <div className="no-print flex items-center mb-2 justify-between">
+        <Button variant="ghost" size="sm">
+          <Link to={`${basePath}`} className="flex items-center">
+            <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
+          </Link>
+        </Button>
+      </div>
       <Card className="border-none shadow-sm sm:border sm:shadow-none">
         <CardHeader className="hidden sm:block">
           <CardTitle>Edit Donation</CardTitle>
         </CardHeader>
-        <CardContent className="p-0 sm:p-6">
+        <CardContent className="p-0 sm:px-6">
           <EditDonationForm
             donation={donation}
             isFieldsLocked={isFieldsLocked}

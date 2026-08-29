@@ -8,6 +8,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { toast } from "sonner";
+import { FaWhatsapp } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -108,20 +109,32 @@ export function ReceiptPreviewPage({ basePath }: ReceiptPreviewPageProps) {
       <ReceiptCard donation={donation} />
 
       <div className="no-print grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <Button variant="outline" className="h-11" onClick={handlePrint}>
+        <Button
+          variant="outline"
+          className="h-11 cursor-pointer"
+          onClick={handlePrint}
+        >
           <Download className="mr-1.5 h-4 w-4" /> PDF
         </Button>
-        <Button variant="outline" className="h-11" onClick={handlePrint}>
+        <Button
+          variant="outline"
+          className="h-11 cursor-pointer"
+          onClick={handlePrint}
+        >
           <Printer className="mr-1.5 h-4 w-4" /> Print
         </Button>
         <Button
           variant="outline"
-          className="h-11 text-green-700"
+          className="h-11 text-green-700 cursor-pointer"
           onClick={handleWhatsApp}
         >
-          <MessageCircle className="mr-1.5 h-4 w-4" /> WhatsApp
+          <FaWhatsapp className="ml-1.5 h-4 w-4" /> WhatsApp
         </Button>
-        <Button variant="outline" className="h-11" onClick={handleShare}>
+        <Button
+          variant="outline"
+          className="h-11 cursor-pointer"
+          onClick={handleShare}
+        >
           <Share2 className="mr-1.5 h-4 w-4" /> Share
         </Button>
       </div>

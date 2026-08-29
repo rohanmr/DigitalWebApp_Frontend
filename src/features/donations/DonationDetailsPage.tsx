@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { Pencil, Trash2, FileCheck, Loader2 } from "lucide-react";
+import { Pencil, Trash2, FileCheck, Loader2, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -118,6 +118,13 @@ export function DonationDetailsPage({ basePath }: DonationDetailsPageProps) {
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 pb-6">
+      <div className="no-print flex items-center justify-between">
+        <Button variant="ghost" size="sm">
+          <Link to={`${basePath}`} className="flex items-center">
+            <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
+          </Link>
+        </Button>
+      </div>
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold">{donation.donorName}</h2>

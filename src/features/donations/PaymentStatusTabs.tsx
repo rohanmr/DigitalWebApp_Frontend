@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock, CircleDollarSign } from "lucide-react";
+import { CheckCircle2, Clock, BadgeIndianRupee } from "lucide-react";
 import type { DonationFormValues } from "@/features/donations/donationSchema";
 
 const options: {
@@ -22,7 +22,7 @@ const options: {
   {
     value: "PARTIALLY_PAID",
     label: "Partially Paid",
-    icon: CircleDollarSign,
+    icon: BadgeIndianRupee,
     activeClass: "border-orange-500 bg-orange-50 text-orange-700",
   },
 ];

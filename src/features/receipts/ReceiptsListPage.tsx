@@ -68,7 +68,7 @@ export function ReceiptsListPage({
       <div className="relative sm:w-80">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
-          placeholder="Search by receipt no, donor, mobile, volunteer..."
+          placeholder="Search by name or mobile..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="h-10 pl-9"
@@ -105,7 +105,7 @@ export function ReceiptsListPage({
                       <TableHead>Payment Date</TableHead>
                       <TableHead>Collected By</TableHead>
                       <TableHead>Generated Date</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
+                      {/* <TableHead className="text-right">Actions</TableHead> */}
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -123,7 +123,7 @@ export function ReceiptsListPage({
                         <TableCell>
                           {formatDate((d as any).receiptGeneratedAt)}
                         </TableCell>
-                        <TableCell className="text-right">
+                        {/* <TableCell className="text-right">
                           <Button variant="ghost" size="sm">
                             <Link
                               to={`${basePath}/${d._id}`}
@@ -132,7 +132,7 @@ export function ReceiptsListPage({
                               <Eye className="mr-1.5 h-4 w-4" /> View
                             </Link>
                           </Button>
-                        </TableCell>
+                        </TableCell> */}
                       </TableRow>
                     ))}
                   </TableBody>
@@ -163,7 +163,10 @@ export function ReceiptsListPage({
                         size="sm"
                         className="mt-3 w-full"
                       >
-                        <Link to={`${basePath}/${d._id}`}>
+                        <Link
+                          to={`${basePath}/${d._id}`}
+                          className="flex items-center"
+                        >
                           <Eye className="mr-1.5 h-3.5 w-3.5" /> View Receipt
                         </Link>
                       </Button>

@@ -294,7 +294,7 @@ export function EditDonationForm({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="h-11 w-full sm:w-auto"
+          className="h-11 w-full sm:w-auto cursor-pointer"
         >
           {isSubmitting ? (
             <>
@@ -307,7 +307,11 @@ export function EditDonationForm({
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-card p-4 sm:hidden">
-        <Button type="submit" disabled={isSubmitting} className="h-12 w-full">
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="h-12 w-full cursor-pointer"
+        >
           {isSubmitting ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...
