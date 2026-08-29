@@ -65,8 +65,8 @@ export function EditDonationPage({ basePath }: EditDonationPageProps) {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="no-print flex items-center mb-2 justify-between">
-        <Button variant="ghost" size="sm">
+      <div className="no-print flex items-center mb-3 justify-between">
+        <Button variant="ghost" size="default">
           <Link to={`${basePath}`} className="flex items-center">
             <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
           </Link>
@@ -76,7 +76,7 @@ export function EditDonationPage({ basePath }: EditDonationPageProps) {
         <CardHeader className="hidden sm:block">
           <CardTitle>Edit Donation</CardTitle>
         </CardHeader>
-        <CardContent className="p-0 sm:px-6">
+        <CardContent className="p-4 sm:px-6">
           <EditDonationForm
             donation={donation}
             isFieldsLocked={isFieldsLocked}

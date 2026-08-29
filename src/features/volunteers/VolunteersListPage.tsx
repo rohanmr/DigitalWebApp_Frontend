@@ -103,11 +103,7 @@ export function VolunteersListPage() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <StatCard
-          label="Total Volunteers"
-          value={String(stats.total)}
-          icon={Users}
-        />
+        <StatCard label="Volunteers" value={String(stats.total)} icon={Users} />
         <StatCard
           label="Active"
           value={String(stats.active)}
@@ -232,8 +228,11 @@ export function VolunteersListPage() {
                             onCheckedChange={() => setStatusTarget(v)}
                           />
                         </div>
-                        <Button variant="outline" size="sm">
-                          <Link to={`/admin/volunteers/${v._id}/edit`}>
+                        <Button variant="outline" size="default">
+                          <Link
+                            to={`/admin/volunteers/${v._id}/edit`}
+                            className="flex items-center"
+                          >
                             <Pencil className="mr-1.5 h-3.5 w-3.5" /> Edit
                           </Link>
                         </Button>

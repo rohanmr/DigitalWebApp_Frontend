@@ -1,9 +1,10 @@
 export const mandalConfig = {
-  nameMarathi: "श्री पवनारा गणपती गणेश मंडळ",
+  nameMarathi: "पावणारा गणपती",
+  fullNameMarathi: "श्री पावणारा गणपती गणेश मंडळ, धाराशिव", // ← add this line
   location: "धाराशिव",
-  establishedYear: "१९९५",
-  establishedYearNumeric: 1995,
+  address: "मेन रोड, निंबाळकर गल्ली, धाराशिव-४१३५०१",
+  establishedYear: "१९६५",
+  establishedYearNumeric: 1965,
   contactNumber: "",
-  address: "",
   receiptPrefix: "REC",
 };

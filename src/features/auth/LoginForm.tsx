@@ -49,10 +49,10 @@ export function LoginForm() {
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="identifier">Email or Mobile Number</Label>
+        <Label htmlFor="identifier">Email</Label>
         <Input
           id="identifier"
-          placeholder="you@example.com or 9876543210"
+          placeholder="Enter Your Email"
           className="h-11"
           {...register("identifier")}
         />

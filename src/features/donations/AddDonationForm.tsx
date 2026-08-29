@@ -25,6 +25,7 @@ import {
   type DonationFormValues,
 } from "@/features/donations/donationSchema";
 import { createDonationApi } from "@/api/donationApi";
+import { DatePicker } from "@/components/DatePicker";
 
 const today = new Date().toISOString().split("T")[0];
 
@@ -57,6 +58,8 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
 
   const paymentStatus = watch("paymentStatus");
   const promisedAmount = watch("promisedAmount");
+  const paymentDate = watch("paymentDate");
+  const expectedPaymentDate = watch("expectedPaymentDate");
 
   const onSubmit = async (values: DonationFormValues) => {
     try {
@@ -85,7 +88,7 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
           <Input
             id="donorName"
             className="h-11"
-            placeholder="e.g. Ajay Patil"
+            placeholder="Enter Donor Name"
             {...register("donorName")}
           />
           {errors.donorName && (
@@ -101,7 +104,8 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
             <Input
               id="mobile"
               className="h-11"
-              placeholder="9876543210"
+              placeholder="Enter Mobile Number"
+              maxLength={10}
               {...register("mobile")}
             />
             {errors.mobile && (
@@ -135,7 +139,7 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
             type="number"
             inputMode="numeric"
             className="h-11"
-            placeholder="2001"
+            placeholder="Enter Amount"
             {...register("promisedAmount")}
           />
           {errors.promisedAmount && (
@@ -178,12 +182,13 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="paymentDate">Payment Date</Label>
-              <Input
+              <DatePicker
                 id="paymentDate"
-                type="date"
-                className="h-11"
-                defaultValue={today}
-                {...register("paymentDate")}
+                value={paymentDate}
+                onChange={(v) =>
+                  setValue("paymentDate", v, { shouldValidate: true })
+                }
+                placeholder="Select date"
               />
             </div>
           </div>
@@ -192,11 +197,13 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
         {paymentStatus === "PENDING" && (
           <div className="space-y-2">
             <Label htmlFor="expectedPaymentDate">Expected Payment Date</Label>
-            <Input
+            <DatePicker
               id="expectedPaymentDate"
-              type="date"
-              className="h-11"
-              {...register("expectedPaymentDate")}
+              value={expectedPaymentDate}
+              onChange={(v) =>
+                setValue("expectedPaymentDate", v, { shouldValidate: true })
+              }
+              placeholder="Select date"
             />
             {errors.expectedPaymentDate && (
               <p className="text-sm text-destructive">
@@ -226,11 +233,13 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="expectedPaymentDate">Next Expected Date</Label>
-              <Input
+              <DatePicker
                 id="expectedPaymentDate"
-                type="date"
-                className="h-11"
-                {...register("expectedPaymentDate")}
+                value={expectedPaymentDate}
+                onChange={(v) =>
+                  setValue("expectedPaymentDate", v, { shouldValidate: true })
+                }
+                placeholder="Select date"
               />
             </div>
           </div>
@@ -245,9 +254,9 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
               }
             >
               <SelectTrigger className="h-11">
-                <SelectValue placeholder="Select payment mode" />
+                <SelectValue placeholder="Select Payment Mode" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="p-2 ml-5">
                 {paymentModeEnum.map((mode) => (
                   <SelectItem key={mode} value={mode}>
                     {paymentModeLabels[mode]}
@@ -301,7 +310,7 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
       </div>
 
       {/* Mobile sticky save button */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-card p-4 sm:hidden">
+      <div className="fixed inset-x-0 bottom-10 z-30 border-t bg-card p-5 sm:hidden">
         <Button type="submit" disabled={isSubmitting} className="h-12 w-full">
           {isSubmitting ? (
             <>
@@ -313,8 +322,8 @@ export function AddDonationForm({ onSuccess }: AddDonationFormProps) {
         </Button>
       </div>
 
-      {/* Spacer so content isn't hidden behind sticky bar on mobile */}
-      <div className="h-16 sm:hidden" />
+      {/* Spacer so content isn't hidden behind sticky bar + bottom nav on mobile */}
+      <div className="h-10 sm:hidden" />
     </form>
   );
 }

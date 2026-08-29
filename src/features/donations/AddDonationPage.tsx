@@ -15,7 +15,7 @@ export function AddDonationPage({ redirectTo }: AddDonationPageProps) {
         <CardHeader className="hidden sm:block">
           <CardTitle>Add Donation</CardTitle>
         </CardHeader>
-        <CardContent className="p-0 sm:px-6">
+        <CardContent className="p-4 sm:px-6">
           <AddDonationForm onSuccess={() => navigate(redirectTo)} />
         </CardContent>
       </Card>

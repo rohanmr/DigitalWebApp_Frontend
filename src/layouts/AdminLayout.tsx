@@ -30,10 +30,14 @@ function AdminSidebarNav({ activeUrl }: { activeUrl: string | null }) {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border px-3 py-4">
+      <SidebarHeader className="border-b border-sidebar-border px-1 py-4">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg">
-            🕉️
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg">
+            <img
+              src="/images/logo-image.png"
+              alt="श्री पावणारा गणपती"
+              className="shrink-0 rounded-full border-2 border-[#c9a227] object-cover"
+            />
           </div>
           <div className="group-data-[collapsible=icon]:hidden">
             <p className="text-sm font-semibold leading-tight">पवनारा गणपती</p>
@@ -102,7 +106,7 @@ export function AdminLayout() {
           <Outlet />
         </main>
 
-        <nav className="fixed bottom-0 left-0 right-0 z-40 flex border-t bg-card md:hidden">
+        <nav className="fixed bottom-0 left-0 right-0 z-40 flex h-16 border-t bg-card md:hidden">
           {adminBottomNavItems.map((item) => {
             const isActive = item.url === activeBottomUrl;
             return (

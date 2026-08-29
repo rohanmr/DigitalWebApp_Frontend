@@ -22,7 +22,7 @@ export const adminNavItems: NavItem[] = [
   { title: "Add Donation", url: "/admin/donations/add", icon: PlusCircle },
   { title: "Volunteers", url: "/admin/volunteers", icon: Users },
   { title: "Receipts", url: "/admin/receipts", icon: ReceiptText },
-  { title: "Reports", url: "/admin/reports", icon: BarChart3 },
+  // { title: "Reports", url: "/admin/reports", icon: BarChart3 },
   { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
@@ -46,5 +46,7 @@ export const adminBottomNavItems: NavItem[] = [
   { title: "Home", url: "/admin/dashboard", icon: LayoutDashboard },
   { title: "Donations", url: "/admin/donations", icon: HandCoins },
   { title: "Add", url: "/admin/donations/add", icon: PlusCircle },
-  { title: "Reports", url: "/admin/reports", icon: BarChart3 },
+  { title: "Profile", url: "/admin/profile", icon: User },
+
+  // { title: "Reports", url: "/admin/reports", icon: BarChart3 },
 ];

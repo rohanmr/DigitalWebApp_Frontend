@@ -25,6 +25,7 @@ import {
 } from "@/features/donations/donationSchema";
 import { updateDonationApi } from "@/api/donationApi";
 import type { Donation } from "@/types/donation";
+import { DatePicker } from "@/components/DatePicker";
 
 const paymentModeLabels: Record<(typeof paymentModeEnum)[number], string> = {
   CASH: "Cash",
@@ -76,6 +77,9 @@ export function EditDonationForm({
 
   const paymentStatus = watch("paymentStatus");
   const promisedAmount = watch("promisedAmount");
+
+  const paymentDate = watch("paymentDate");
+  const expectedPaymentDate = watch("expectedPaymentDate");
 
   const onSubmit = async (values: DonationFormValues) => {
     try {
@@ -188,12 +192,13 @@ export function EditDonationForm({
             </div>
             <div className="space-y-2">
               <Label htmlFor="paymentDate">Payment Date</Label>
-              <Input
+              <DatePicker
                 id="paymentDate"
-                type="date"
-                className="h-11"
-                disabled={isFieldsLocked}
-                {...register("paymentDate")}
+                value={paymentDate}
+                onChange={(v) =>
+                  setValue("paymentDate", v, { shouldValidate: true })
+                }
+                placeholder="Select date"
               />
             </div>
           </div>
@@ -202,11 +207,13 @@ export function EditDonationForm({
         {paymentStatus === "PENDING" && (
           <div className="space-y-2">
             <Label htmlFor="expectedPaymentDate">Expected Payment Date</Label>
-            <Input
+            <DatePicker
               id="expectedPaymentDate"
-              type="date"
-              className="h-11"
-              {...register("expectedPaymentDate")}
+              value={expectedPaymentDate}
+              onChange={(v) =>
+                setValue("expectedPaymentDate", v, { shouldValidate: true })
+              }
+              placeholder="Select date"
             />
             {errors.expectedPaymentDate && (
               <p className="text-sm text-destructive">
@@ -236,11 +243,13 @@ export function EditDonationForm({
             </div>
             <div className="space-y-2">
               <Label htmlFor="expectedPaymentDate">Next Expected Date</Label>
-              <Input
+              <DatePicker
                 id="expectedPaymentDate"
-                type="date"
-                className="h-11"
-                {...register("expectedPaymentDate")}
+                value={expectedPaymentDate}
+                onChange={(v) =>
+                  setValue("expectedPaymentDate", v, { shouldValidate: true })
+                }
+                placeholder="Select date"
               />
             </div>
           </div>
@@ -259,7 +268,7 @@ export function EditDonationForm({
               <SelectTrigger className="h-11">
                 <SelectValue placeholder="Select payment mode" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="p-2 ml-5">
                 {paymentModeEnum.map((mode) => (
                   <SelectItem key={mode} value={mode}>
                     {paymentModeLabels[mode]}
@@ -306,12 +315,8 @@ export function EditDonationForm({
         </Button>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-card p-4 sm:hidden">
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="h-12 w-full cursor-pointer"
-        >
+      <div className="fixed inset-x-0 bottom-10 z-30 border-t bg-card p-4 sm:hidden">
+        <Button type="submit" disabled={isSubmitting} className="h-12 w-full">
           {isSubmitting ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...
@@ -321,7 +326,7 @@ export function EditDonationForm({
           )}
         </Button>
       </div>
-      <div className="h-16 sm:hidden" />
+      <div className="h-5 sm:hidden" />
     </form>
   );
 }

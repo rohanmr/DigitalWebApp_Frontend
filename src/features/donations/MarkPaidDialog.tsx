@@ -25,6 +25,7 @@ import {
 import { markDonationAsPaidApi } from "@/api/donationApi";
 import { formatCurrency } from "@/lib/format";
 import type { Donation } from "@/types/donation";
+import { DatePicker } from "@/components/DatePicker";
 
 const markPaidSchema = z.object({
   receivedAmount: z.coerce.number().positive("Enter a valid amount"),
@@ -65,7 +66,7 @@ export function MarkPaidDialog({
       paymentDate: today,
     },
   });
-
+  const paymentDate = watch("paymentDate");
   const receivedAmount = Number(watch("receivedAmount") || 0);
   const newTotal =
     donation.receivedAmount +
@@ -161,11 +162,13 @@ export function MarkPaidDialog({
 
           <div className="space-y-2">
             <Label htmlFor="paymentDate">Payment Date</Label>
-            <Input
+            <DatePicker
               id="paymentDate"
-              type="date"
-              className="h-11"
-              {...register("paymentDate")}
+              value={paymentDate}
+              onChange={(v) =>
+                setValue("paymentDate", v, { shouldValidate: true })
+              }
+              placeholder="Select date"
             />
           </div>
 

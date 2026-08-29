@@ -22,10 +22,10 @@ export function RecentDonationsCards({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 ">
       {donations.map((d) => (
         <Link key={d._id} to={`${basePath}/${d._id}`}>
-          <Card className="border-none shadow-sm">
+          <Card className="border-none shadow-sm mt-2">
             <CardContent className="p-4">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">

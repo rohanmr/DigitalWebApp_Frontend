@@ -33,7 +33,7 @@ export function DonationsCards({ donations, basePath }: DonationsCardsProps) {
               <StatusBadge status={d.paymentStatus} />
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+            <div className="mt-3 flex gap-10 text-sm">
               <div>
                 <p className="text-xs text-muted-foreground">Promised</p>
                 <p className="font-medium">
