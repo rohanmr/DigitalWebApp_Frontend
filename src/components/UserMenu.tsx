@@ -50,20 +50,27 @@ export function UserMenu() {
             </p>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() =>
-              navigate(
-                user.role === "admin" ? "/admin/profile" : "/volunteer/profile",
-              )
-            }
-          >
-            <UserIcon className="mr-2 h-4 w-4" />
-            Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleLogout} className="text-destructive">
-            <LogOut className="mr-2 h-4 w-4" />
-            Logout
-          </DropdownMenuItem>
+          <div className="space-y-1 p-1">
+            <DropdownMenuItem
+              onClick={() =>
+                navigate(
+                  user.role === "admin"
+                    ? "/admin/profile"
+                    : "/volunteer/profile",
+                )
+              }
+            >
+              <UserIcon className="mr-2 h-4 w-4" />
+              Profile
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={handleLogout}
+              className="text-destructive"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </DropdownMenuItem>
+          </div>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

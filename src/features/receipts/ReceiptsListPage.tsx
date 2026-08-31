@@ -160,14 +160,14 @@ export function ReceiptsListPage({
                       </div>
                       <Button
                         variant="outline"
-                        size="sm"
-                        className="mt-3 w-full"
+                        size="lg"
+                        className="mt-3 w-1/2"
                       >
                         <Link
                           to={`${basePath}/${d._id}`}
                           className="flex items-center"
                         >
-                          <Eye className="mr-1.5 h-3.5 w-3.5" /> View Receipt
+                          <Eye className="mr-1.5 h-3.5 w-2" /> View Receipt
                         </Link>
                       </Button>
                     </CardContent>

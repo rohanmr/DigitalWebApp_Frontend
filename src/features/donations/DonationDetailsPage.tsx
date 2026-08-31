@@ -139,7 +139,7 @@ export function DonationDetailsPage({ basePath }: DonationDetailsPageProps) {
         </CardHeader>
         <CardContent className="divide-y">
           <InfoRow
-            label="Promised Amount"
+            label="Donation Amount"
             value={formatCurrency(donation.promisedAmount)}
           />
           <InfoRow
@@ -185,7 +185,7 @@ export function DonationDetailsPage({ basePath }: DonationDetailsPageProps) {
             label="Collected By"
             value={donation.collectedBy?.name ?? "—"}
           />
-          <InfoRow label="Created By" value={donation.createdBy?.name ?? "—"} />
+          {/* <InfoRow label="Created By" value={donation.createdBy?.name ?? "—"} /> */}
           {donation.receiptGenerated && (
             <InfoRow
               label="Receipt Number"
@@ -211,9 +211,10 @@ export function DonationDetailsPage({ basePath }: DonationDetailsPageProps) {
       <Separator />
 
       {/* Conditional actions */}
-      <div className="flex flex-col gap-2 sm:flex-row">
+      <div className="flex flex-row sm:flex-row gap-2">
         <Button
           variant="outline"
+          size="sm"
           className="h-11 flex-1 items-center cursor-pointer"
         >
           <Link

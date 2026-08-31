@@ -35,13 +35,13 @@ export function DonationsCards({ donations, basePath }: DonationsCardsProps) {
 
             <div className="mt-3 flex gap-10 text-sm">
               <div>
-                <p className="text-xs text-muted-foreground">Promised</p>
+                <p className="text-xs text-muted-foreground">Donation Amount</p>
                 <p className="font-medium">
                   {formatCurrency(d.promisedAmount)}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Received</p>
+                <p className="text-xs text-muted-foreground">Received Amount</p>
                 <p className="font-medium">
                   {formatCurrency(d.receivedAmount)}
                 </p>
@@ -54,12 +54,12 @@ export function DonationsCards({ donations, basePath }: DonationsCardsProps) {
             </div>
 
             <div className="mt-3 flex gap-2 border-t pt-3">
-              <Button variant="outline" size="sm" className="flex-1">
+              <Button variant="outline" size="lg" className="flex-1">
                 <Link to={`${basePath}/${d._id}`} className="flex items-center">
                   <Eye className="mr-1.5 h-3.5 w-3.5" /> View
                 </Link>
               </Button>
-              <Button variant="outline" size="sm" className="flex-1">
+              <Button variant="outline" size="lg" className="flex-1">
                 <Link
                   to={`${basePath}/${d._id}/edit`}
                   className="flex items-center"
