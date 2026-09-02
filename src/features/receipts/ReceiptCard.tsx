@@ -37,7 +37,7 @@ export function ReceiptCard({ donation }: { donation: Donation }) {
 
         <div className="mt-3 flex items-center justify-between border-b border-dashed border-[#c9a227]/50 pb-2 text-xs">
           <span className="font-medium text-[#7a1f2b]">
-            क. पावती क.:{" "}
+            पावती क्र :{" "}
             <span className="font-bold">{donation.receiptNumber}</span>
           </span>
           <span className="text-muted-foreground">
@@ -54,7 +54,7 @@ export function ReceiptCard({ donation }: { donation: Donation }) {
             </span>
           </p>
           <p className="text-xs text-muted-foreground">
-            यांनी श्री गणपती मंडळाकरिता दिलेली देणगी
+            यांनी श्री पावणारा गणपती गणेश मंडळाकरिता दिलेली देणगी.
           </p>
           <p className="text-xs text-muted-foreground">
             मो. {donation.mobile}
