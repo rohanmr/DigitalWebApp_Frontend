@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
-import { AuthProvider } from "@/features/auth/AuthContext";
+import { AuthProvider, useAuth } from "@/features/auth/AuthContext";
 import { ProtectedRoute } from "@/routes/ProtectedRoute";
 import { LoginPage } from "@/features/auth/LoginPage";
 import { AdminLayout } from "@/layouts/AdminLayout";
@@ -19,13 +19,69 @@ import { ProfilePage } from "./features/profile/ProfilePage";
 import { SettingsPage } from "./features/settings/SettingsPage";
 import { VolunteerDashboardPage } from "./features/dashboard/VolunteerDashboardPage";
 
-// Temporary placeholders — replaced page by page in upcoming steps
+// Add this component in App.tsx, near your other route helpers
+function RedirectIfAuthenticated({ children }: { children: React.ReactNode }) {
+  const { user, isLoading, isAuthenticated } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-svh items-center justify-center text-muted-foreground">
+        Loading...
+      </div>
+    );
+  }
+
+  if (isAuthenticated && user) {
+    return (
+      <Navigate
+        to={user.role === "admin" ? "/admin/dashboard" : "/volunteer/dashboard"}
+        replace
+      />
+    );
+  }
+
+  return <>{children}</>;
+}
+
+function UnauthorizedPage() {
+  const { user, isLoading, isAuthenticated } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-svh items-center justify-center text-muted-foreground">
+        Loading...
+      </div>
+    );
+  }
+
+  // If already authenticated, there's no reason to ever sit on this page —
+  // send them straight back to wherever they actually belong.
+  if (isAuthenticated && user) {
+    return (
+      <Navigate
+        to={user.role === "admin" ? "/admin/dashboard" : "/volunteer/dashboard"}
+        replace
+      />
+    );
+  }
+
+  // Not authenticated at all — send to login instead of showing a dead page.
+  return <Navigate to="/login" replace />;
+}
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={
+              <RedirectIfAuthenticated>
+                <LoginPage />
+              </RedirectIfAuthenticated>
+            }
+          />
 
           {/* Admin */}
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
@@ -129,10 +185,7 @@ function App() {
             </Route>
           </Route>
 
-          <Route
-            path="/unauthorized"
-            element={<div className="p-8">Unauthorized</div>}
-          />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
         <Toaster richColors position="top-right" />

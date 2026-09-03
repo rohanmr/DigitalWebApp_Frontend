@@ -23,7 +23,7 @@ export function LoginPage() {
         <div className="flex flex-1 items-center justify-center px-10">
           <div className="w-full max-w-sm space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-[#7a1f2b]">Admin Login</h2>
+              <h2 className="text-2xl font-bold text-[#7a1f2b]">Login</h2>
               <p className="text-sm text-muted-foreground">
                 Welcome back! Please login to your account
               </p>

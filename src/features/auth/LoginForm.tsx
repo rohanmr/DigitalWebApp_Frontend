@@ -31,6 +31,9 @@ export function LoginForm() {
       const user = await login(values);
       navigate(
         user.role === "admin" ? "/admin/dashboard" : "/volunteer/dashboard",
+        {
+          replace: true,
+        },
       );
     } catch (err: any) {
       setServerError(
