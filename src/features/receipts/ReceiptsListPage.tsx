@@ -23,10 +23,7 @@ interface ReceiptsListPageProps {
   donationsBasePath: string; // "/admin/donations" | "/volunteer/donations"
 }
 
-export function ReceiptsListPage({
-  basePath,
-  donationsBasePath,
-}: ReceiptsListPageProps) {
+export function ReceiptsListPage({ basePath }: ReceiptsListPageProps) {
   const [donations, setDonations] = useState<Donation[]>([]);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);

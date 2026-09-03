@@ -20,10 +20,6 @@ import { SettingsPage } from "./features/settings/SettingsPage";
 import { VolunteerDashboardPage } from "./features/dashboard/VolunteerDashboardPage";
 
 // Temporary placeholders — replaced page by page in upcoming steps
-function Placeholder({ label }: { label: string }) {
-  return <div className="p-4 text-muted-foreground">{label} — coming soon</div>;
-}
-
 function App() {
   return (
     <BrowserRouter>

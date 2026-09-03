@@ -31,7 +31,7 @@ function initials(name: string) {
 }
 
 export function ProfilePage() {
-  const { user, logout, login } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const [editOpen, setEditOpen] = useState(false);
@@ -143,21 +143,21 @@ export function ProfilePage() {
       <div className="space-y-2">
         <Button
           variant="outline"
-          className="h-11 w-full justify-start"
+          className="h-11 w-full justify-start cursor-pointer"
           onClick={() => setEditOpen(true)}
         >
           <Pencil className="mr-2 h-4 w-4" /> Edit Profile
         </Button>
         <Button
           variant="outline"
-          className="h-11 w-full justify-start"
+          className="h-11 w-full justify-start cursor-pointer"
           onClick={() => setPasswordOpen(true)}
         >
           <KeyRound className="mr-2 h-4 w-4" /> Change Password
         </Button>
         <Button
           variant="outline"
-          className="h-11 w-full justify-start border-destructive text-destructive hover:bg-destructive/10"
+          className="h-11 w-full justify-start border-destructive cursor-pointer text-destructive hover:bg-destructive/10"
           onClick={() => setLogoutOpen(true)}
         >
           <LogOut className="mr-2 h-4 w-4" /> Logout
@@ -170,8 +170,7 @@ export function ProfilePage() {
         onOpenChange={setEditOpen}
         onSuccess={(updatedUser) => {
           localStorage.setItem("gvms_user", JSON.stringify(updatedUser));
-          // Refresh auth context's cached user without forcing a re-login
-          login({ identifier: user.email, password: "" }).catch(() => {});
+          window.location.reload(); // simplest reliable refresh of AuthContext's cached state
         }}
       />
       <ChangePasswordDialog

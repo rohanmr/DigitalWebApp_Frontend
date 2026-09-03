@@ -82,7 +82,7 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
         <Input
           id="name"
           className="h-11"
-          placeholder="e.g. Mahesh Patil"
+          placeholder="Enter Volunteer Name"
           {...register("name")}
         />
         {errors.name && (
@@ -96,7 +96,7 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
           id="email"
           type="email"
           className="h-11"
-          placeholder="mahesh@example.com"
+          placeholder="Enter Volunteer Email"
           {...register("email")}
         />
         {errors.email && (
@@ -109,7 +109,7 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
         <Input
           id="mobile"
           className="h-11"
-          placeholder="9876543210"
+          placeholder="Enter Mobile Number"
           {...register("mobile")}
         />
         {errors.mobile && (
@@ -124,6 +124,7 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
             id="password"
             type={showPassword ? "text" : "password"}
             className="h-11 pr-10"
+            placeholder="Enter Password"
             {...register("password")}
           />
           <button
@@ -152,6 +153,7 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
           type={showPassword ? "text" : "password"}
           className="h-11"
           {...register("confirmPassword")}
+          placeholder="Enter Confirm Password"
         />
         {errors.confirmPassword && (
           <p className="text-sm text-destructive">
@@ -160,7 +162,11 @@ export function AddVolunteerForm({ onSuccess }: AddVolunteerFormProps) {
         )}
       </div>
 
-      <Button type="submit" disabled={isSubmitting} className="h-11 w-full">
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className="h-11 w-full cursor-pointer"
+      >
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Creating...

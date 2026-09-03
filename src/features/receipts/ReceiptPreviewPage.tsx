@@ -365,18 +365,65 @@ export function ReceiptPreviewPage({ basePath }: ReceiptPreviewPageProps) {
     }
   };
 
+  // const handleShare = async () => {
+  //   if (!donation) return;
+  //   const shareText = `Receipt ${donation.receiptNumber} — ${donation.donorName} — ${formatCurrency(donation.receivedAmount)}`;
+  //   if (navigator.share) {
+  //     try {
+  //       await navigator.share({ title: "Donation Receipt", text: shareText });
+  //     } catch {
+  //       // user cancelled — no action needed
+  //     }
+  //   } else {
+  //     await navigator.clipboard.writeText(shareText);
+  //     toast.success("Receipt details copied to clipboard");
+  //   }
+  // };
   const handleShare = async () => {
     if (!donation) return;
+
     const shareText = `Receipt ${donation.receiptNumber} — ${donation.donorName} — ${formatCurrency(donation.receivedAmount)}`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: "Donation Receipt", text: shareText });
-      } catch {
-        // user cancelled — no action needed
+
+    try {
+      const blob = await captureReceiptAsBlob();
+      if (!blob) throw new Error("Could not capture receipt");
+
+      const file = new File([blob], `receipt-${donation.receiptNumber}.png`, {
+        type: "image/png",
+      });
+
+      // Native share sheet with the image attached (mobile browsers that support file sharing)
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "Donation Receipt",
+          text: shareText,
+        });
+        return;
       }
-    } else {
+
+      // Fallback: share is supported but not for files — share text only
+      if (navigator.share) {
+        await navigator.share({ title: "Donation Receipt", text: shareText });
+        return;
+      }
+
+      // Fallback: no Web Share API at all (most desktop browsers)
       await navigator.clipboard.writeText(shareText);
       toast.success("Receipt details copied to clipboard");
+      console.log(
+        "share available:",
+        !!navigator.share,
+        "canShare files:",
+        navigator.canShare?.({ files: [] }),
+      );
+    } catch (err) {
+      if ((err as Error)?.name === "AbortError") {
+        // user cancelled the share sheet — no action needed
+        return;
+      }
+      console.error("Share failed:", err);
+      toast.error("Failed to share receipt");
     }
   };
 

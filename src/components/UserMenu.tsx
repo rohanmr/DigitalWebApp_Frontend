@@ -59,13 +59,14 @@ export function UserMenu() {
                     : "/volunteer/profile",
                 )
               }
+              className="cursor-pointer"
             >
               <UserIcon className="mr-2 h-4 w-4" />
               Profile
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={handleLogout}
-              className="text-destructive"
+              className="text-destructive cursor-pointer"
             >
               <LogOut className="mr-2 h-4 w-4" />
               Logout

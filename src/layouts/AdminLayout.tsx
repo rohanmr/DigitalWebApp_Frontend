@@ -96,7 +96,7 @@ export function AdminLayout() {
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center justify-between border-b bg-card px-4">
           <div className="flex items-center gap-3">
-            <SidebarTrigger />
+            <SidebarTrigger className="cursor-pointer" />
             <h1 className="text-lg font-semibold">{pageTitle}</h1>
           </div>
           <UserMenu />

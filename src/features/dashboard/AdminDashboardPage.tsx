@@ -45,7 +45,7 @@ export function AdminDashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold">नमस्कार, {user?.name} 🙏</h2>
+        <h2 className="text-xl font-semibold">Welcome, {user?.name} 🙏</h2>
         <p className="text-sm text-muted-foreground">
           Here's what's happening with donations today.
         </p>

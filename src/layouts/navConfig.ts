@@ -3,7 +3,6 @@ import {
   HandCoins,
   PlusCircle,
   Users,
-  BarChart3,
   Settings,
   User,
   type LucideIcon,

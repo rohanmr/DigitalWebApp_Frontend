@@ -16,7 +16,7 @@ export function VolunteerLayout() {
     <div className="flex min-h-svh flex-col bg-background">
       <header className="flex h-16 shrink-0 items-center justify-between border-b bg-primary px-4 text-primary-foreground">
         <div>
-          <p className="text-sm text-primary-foreground/80">नमस्कार,</p>
+          <p className="text-sm text-primary-foreground/80">Welcome,</p>
           <p className="font-semibold leading-tight">{user?.name}</p>
         </div>
         <UserMenu />

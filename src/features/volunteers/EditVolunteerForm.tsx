@@ -138,7 +138,11 @@ export function EditVolunteerForm({
         )}
       </div>
 
-      <Button type="submit" disabled={isSubmitting} className="h-11 w-full">
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className="h-11 w-full cursor-pointer"
+      >
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...

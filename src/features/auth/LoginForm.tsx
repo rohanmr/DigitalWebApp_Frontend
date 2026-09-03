@@ -90,7 +90,7 @@ export function LoginForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="h-11 w-full bg-[#7a1f2b] hover:bg-[#661a24] text-white"
+        className="h-11 w-full bg-[#7a1f2b] hover:bg-[#661a24] text-white cursor-pointer"
       >
         {isSubmitting ? (
           <>

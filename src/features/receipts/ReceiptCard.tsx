@@ -1,12 +1,6 @@
-import { formatCurrency, formatDate } from "@/lib/format";
+import { formatDate } from "@/lib/format";
 import { numberToIndianWords } from "@/lib/numberToWords";
 import type { Donation } from "@/types/donation";
-
-const paymentModeLabels: Record<string, string> = {
-  CASH: "रोख",
-  UPI: "UPI",
-  OTHER: "इतर",
-};
 
 export function ReceiptCard({ donation }: { donation: Donation }) {
   return (

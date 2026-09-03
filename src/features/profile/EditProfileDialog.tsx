@@ -13,7 +13,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 import {
   editProfileSchema,
@@ -90,17 +89,17 @@ export function EditProfileDialog({
               </p>
             )}
           </div>
-          <Alert>
+          {/* <Alert>
             <AlertDescription className="text-xs">
               Note: this requires a backend endpoint that hasn't been added yet
               — saving will fail until then.
             </AlertDescription>
-          </Alert>
+          </Alert> */}
           <DialogFooter>
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="h-11 w-full"
+              className="h-11 w-full cursor-pointer"
             >
               {isSubmitting ? (
                 <>

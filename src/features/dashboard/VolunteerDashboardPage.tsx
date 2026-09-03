@@ -65,7 +65,7 @@ export function VolunteerDashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold">नमस्कार, {user?.name} 🙏</h2>
+        <h2 className="text-xl font-semibold">Welcome, {user?.name} 🙏</h2>
         <p className="text-sm text-muted-foreground">
           Here's your collection summary.
         </p>
